@@ -4342,6 +4342,71 @@
         ]
     },
     {
+        "id": "cd4aa78e74baea0f",
+        "type": "mqtt in",
+        "z": "165c2f30f87b1c32",
+        "name": "",
+        "topic": "+/+/plantroom/settings/usersettings",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "0a9a86a0d76f9647",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 1960,
+        "wires": [
+            [
+                "9899ebefab97a68c",
+                "78588a3bef32e5ce"
+            ]
+        ]
+    },
+    {
+        "id": "9899ebefab97a68c",
+        "type": "function",
+        "z": "165c2f30f87b1c32",
+        "name": "Save settings to Memory",
+        "func": "\nflow.set(\"plantroomsettings\", msg.payload);\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "78588a3bef32e5ce",
+        "type": "debug",
+        "z": "165c2f30f87b1c32",
+        "name": "debug 104",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "c17c09c821c39072",
+        "type": "comment",
+        "z": "165c2f30f87b1c32",
+        "name": "Incoming User Settings from Screen.",
+        "info": "",
+        "x": 260,
+        "y": 1900,
+        "wires": []
+    },
+    {
         "id": "1fef3f23ab7ba437",
         "type": "modbus-flex-getter",
         "z": "28c60231abb95e2c",
