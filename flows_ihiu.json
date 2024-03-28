@@ -4407,53 +4407,6 @@
         "wires": []
     },
     {
-        "id": "a84e1c7fbb1b3dbe",
-        "type": "inject",
-        "z": "165c2f30f87b1c32",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "10",
-        "topic": "",
-        "payload": "local/+/heatpump/settings/#",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1980,
-        "wires": [
-            [
-                "6ca3ec490fc470df"
-            ]
-        ]
-    },
-    {
-        "id": "6ca3ec490fc470df",
-        "type": "mqtt out",
-        "z": "165c2f30f87b1c32",
-        "name": "",
-        "topic": "local/zccnee9chah/heatpum/cmd/request",
-        "qos": "0",
-        "retain": "false",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "0a9a86a0d76f9647",
-        "x": 440,
-        "y": 1980,
-        "wires": []
-    },
-    {
         "id": "1fef3f23ab7ba437",
         "type": "modbus-flex-getter",
         "z": "28c60231abb95e2c",
