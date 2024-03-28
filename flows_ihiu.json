@@ -4440,7 +4440,7 @@
         "type": "mqtt out",
         "z": "165c2f30f87b1c32",
         "name": "",
-        "topic": "heatpum/cmd/request",
+        "topic": "heatpump/cmd/request",
         "qos": "0",
         "retain": "false",
         "respTopic": "",
