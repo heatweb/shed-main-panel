@@ -3669,7 +3669,7 @@
         "type": "function",
         "z": "165c2f30f87b1c32",
         "name": "Weather Compensation",
-        "func": "var oat = flow.get(\"outdoorAmbientTemperature\") || 21;\n\nif (oat < 0) { msg.payload = 9; }\nelse if (oat < 5) { msg.payload = 8;}\nelse if (oat < 10) { msg.payload = 7.5;}\nelse if (oat < 15) { msg.payload = 6.5;}\nelse { msg.payload = 6;}\n\n\nnode.status({fill:\"blue\",shape:\"dot\",text:msg.payload});\n\nreturn msg;",
+        "func": "var oat = flow.get(\"outdoorAmbientTemperature\") || 21;\n\nvar temps = [\n    {\n        \"oat\": \"-5\",\n        \"voltage\": \"9\"\n    },\n    {\n        \"oat\": \"0\",\n        \"voltage\": \"8\"\n    },\n    {\n        \"oat\": \"5\",\n        \"voltage\": \"7.5\"\n    },\n    {\n        \"oat\": \"10\",\n        \"voltage\": \"6.5\"\n    },\n    {\n        \"oat\": \"15\",\n        \"voltage\": \"6\"\n    },\n    {\n        \"oat\": \"20\",\n        \"voltage\": \"6\"\n    },\n    {\n        \"oat\": \"25\",\n        \"voltage\": \"6\"\n    }\n]\n\nif (flow.get(\"tOutSettings\")) { temps = flow.get(\"tOutSettings\"); }\n\n\nvar temp = 7;\nfor (var i = 1; i < temps.length; i++) {\n\n    if (temps[i][0] == oat) {\n\n        temp = temps[i][1];\n\n        break;\n    }\n    else if (temps[i - 1][0] == oat) {\n\n        temp = temps[i - 1][1];\n\n        break;\n    }\n    else if ((temps[i - 1][0] <= oat) && (temps[i][0] > oat)) {\n\n        temp = temps[i - 1][1] - ((temps[i][1] - temps[i - 1][1]) * ((oat - temps[i - 1][0]) / (temps[i - 1][0] - temps[i][0])));\n\n        break;\n    }\n    else if ((temps[i - 1][0] >= oat) && (temps[i][0] < oat)) {\n\n        temp = temps[i - 1][1] - ((temps[i][1] - temps[i - 1][1]) * ((oat - temps[i - 1][0]) / (temps[i - 1][0] - temps[i][0])));\n\n        break;\n    }\n\n}\n\nmsg.payload = temp;\n\n// if (oat < 0) { msg.payload = 9; }\n// else if (oat < 5) { msg.payload = 8;}\n// else if (oat < 10) { msg.payload = 7.5;}\n// else if (oat < 15) { msg.payload = 6.5;}\n// else { msg.payload = 6;}\n\n\nnode.status({fill:\"blue\",shape:\"dot\",text:msg.payload});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4405,35 +4405,6 @@
         "x": 260,
         "y": 1860,
         "wires": []
-    },
-    {
-        "id": "b5d6947bea983777",
-        "type": "inject",
-        "z": "165c2f30f87b1c32",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"oat\":\"-5\",\"voltage\":\"9\"},{\"oat\":\"0\",\"voltage\":\"8\"},{\"oat\":\"5\",\"voltage\":\"7.5\"},{\"oat\":\"10\",\"voltage\":\"6.5\"},{\"oat\":\"15\",\"voltage\":\"6\"},{\"oat\":\"20\",\"voltage\":\"6\"},{\"oat\":\"25\",\"voltage\":\"6\"}]",
-        "payloadType": "json",
-        "x": 350,
-        "y": 1920,
-        "wires": [
-            [
-                "9899ebefab97a68c"
-            ]
-        ]
     },
     {
         "id": "1fef3f23ab7ba437",
