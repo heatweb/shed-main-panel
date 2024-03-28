@@ -4440,7 +4440,7 @@
         "type": "mqtt out",
         "z": "165c2f30f87b1c32",
         "name": "",
-        "topic": "heatpump/cmd/request",
+        "topic": "_/cmd/request",
         "qos": "0",
         "retain": "false",
         "respTopic": "",
@@ -4449,7 +4449,7 @@
         "correl": "",
         "expiry": "",
         "broker": "0a9a86a0d76f9647",
-        "x": 380,
+        "x": 360,
         "y": 1980,
         "wires": []
     },
